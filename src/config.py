@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from handlers import ChatHandler
-from tornado.web import StaticFileHandler
+from handlers import ChatHandler, HomeHandler
 
 __all__ = ['settings', 'routes']
 
@@ -15,7 +14,7 @@ settings = {
 
 routes = [
     (r'/chat/(.*)', ChatHandler),
-    (r'/(.*)', StaticFileHandler, {
+    (r'/(.*)', HomeHandler, {
         "path": "dist",
         "default_filename": "index.html",
     }),
