@@ -1,7 +1,7 @@
-foc-server
+fosserver
 ==========
 
-foc server. python 2 and 3 compatible.
+fosserver. python 2 and 3 compatible.
 
 Dependency
 ==========
