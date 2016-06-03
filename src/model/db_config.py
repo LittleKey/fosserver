@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
-from pony import orm
+from pony.orm import (
+    Database, sql_debug, db_session,
+    PrimaryKey, Required, Optional
+)
 
-__all__ = ['db', 'CreateModel']
+__all__ = [
+    'db', 'CreateModel', 'PrimaryKey', 'Required', 'Optional', 'db_session'
+]
 
-db = orm.Database()
-orm.sql_debug(True)
+db = Database()
+sql_debug(True)
 
 
 def CreateModel(name=':memory:'):
