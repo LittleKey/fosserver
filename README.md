@@ -14,6 +14,8 @@ Dependency
 
 - redis
 
+- pony
+
 Usage
 =====
 
