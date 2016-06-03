@@ -21,24 +21,19 @@ class ChatHandler(WebSocketHandler):
         print("connection opend...")
         self.room_id = room_id
         client = GetCurrentClient(self)
-        client.setProxy(write_message=self.write_message)
+        client.setSender(self.write_message)
         room = Factory().getRoom(self.room_id)
         room.addClient(client)
         self.write_message("connected.")
 
     def on_message(self, message):
-        current_user_id = GetCurrentClient(self).getUserId()
-        for client in Factory().getRoom(self.room_id).getClients():
-            user_id = client.getUserId()
-            if user_id != current_user_id:
-                client.write_message("%s: %s" % (user_id, message))
+        Factory().getRoom(self.room_id).publish(message)
         print("received:", message)
 
     def on_close(self):
         client = GetCurrentClient(self)
-        client.setProxy()  # cancel proxy
+        client.setSender(None)  # remove sender
         room = Factory().getRoom(self.room_id)
-        # TODO : remove client from Factory._clients
         room.removeClient(client)
         print("connection closed...")
 

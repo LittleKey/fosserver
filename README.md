@@ -12,6 +12,8 @@ Dependency
 
 - six
 
+- redis
+
 Usage
 =====
 
