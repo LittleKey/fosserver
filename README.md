@@ -19,4 +19,15 @@ Dependency
 Usage
 =====
 
+#### Setup environment
+
+```
+pip install virtualenvwrapper
+./setup_env.sh
+source ~/.zshrc  # if use zshrc
+workon fosserver
+```
+
+#### Run
+
 `python src/main.py`
